@@ -1,0 +1,131 @@
+﻿* {
+    padding: 0px;
+    margin: 0px
+}
+body {
+    background-color: #ff8966ff;
+    font-family: 'Roboto','Arial Narrow', Arial, sans-serif;
+    color: #f8f4e3ff;
+    padding: 5px;
+}
+#maincontent {
+    background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/double-bubble-dark.png);
+    background: #0F1231;
+    border-radius: 38px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+#brand a {
+    background-color: #ffffff00;
+    transition: 0.1s;
+    outline: 0;
+}
+    #brand a:hover {
+        outline: 0;
+        background-color: none;
+        transition: 0.1s;
+        text-shadow: 0px 3px 3px  #ffffff60;
+    }
+a {
+    color: inherit;
+    text-decoration: none;
+    background-color: #ffffff32;
+    padding: 0px 5px;
+    box-sizing: border-box;
+    outline: 1px solid #f8f4e300;
+    outline-offset: -1px;
+    transition: 0.1s;
+}
+    a:hover {
+        color: white;
+        outline: 1px solid #f8f4e3ff;
+        background-color: #ffffff62;
+        outline-offset: -1px;
+        transition: 0.1s;
+    }
+h1 {
+    font-style: italic;
+    font-size: 2.5em;
+}
+h2{
+    font-weight:300;
+    margin: 10px 0px;
+}
+h3
+{
+    font-weight: 300;
+    font-size: 2em
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+#today p {
+    align-self: flex-start;
+    font-size: 0.9em;
+}
+#brand{
+    align-self: end;
+    width: 200px;
+}
+ul{
+    list-style:none;
+}
+li {
+    margin-top: 10px;
+}
+input{
+    width: 100%;
+    height: 2em;
+}
+.btnsubmit {
+    font-size: 1.1em;
+    font-weight: 600;
+    font-variant: small-caps;
+    color: #0F1231;
+    margin: 10px 0px;
+    transition: 0.2s;
+}
+    .btnsubmit:hover {
+        color: #f8f4e3ff;
+        transition: 0.2s;
+        border: 1px solid #ff8966ff;
+    }
+input {
+    background-color: #272a46;
+    border: none;
+    margin: 4px 0px;
+    color: #f8f4e3ff;
+    padding-left:5px;
+}
+hr {
+    border-top: 1px solid #f8f4e3;
+    margin: 10px 0px;
+}
+.field-validation-error {
+    color: #ff8966ff;
+    font-size:0.9em;
+}
+.agendaHead{
+    justify-content: space-around;
+    display: flex;
+}
+.table{
+    width: 100%;
+    margin: 10px 0px;
+}
+th{
+    text-align: left;
+    padding:2px 0px;
+}
+.actions{
+    text-align: right;
+}
+.success {
+    font-style: italic;
+    font-weight: 500;
+    color: #59c86a;
+}

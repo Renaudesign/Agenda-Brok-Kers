@@ -1,0 +1,13 @@
+﻿@{
+	ViewBag.Title = "Index";
+}
+<h2>AGENDA</h2>
+
+<div class="agendaHead">
+    <span class="horaires">🕗 horaires</span>
+    <span class="courtiers">👔 courtiers @Html.ActionLink("+", "AddBroker", "Brokers") @Html.ActionLink("liste", "ListBrokers", "Brokers")</span>
+    <span class="clients">👦 clients @Html.ActionLink("+", "AddClient", "Clients") @Html.ActionLink("liste", "ListClients", "Clients")</span>
+</div>
+
+
+

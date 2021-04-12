@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Brokers.Models.brokers>
+
+@{
+    ViewBag.Title = "ListBrokers";
+}
+
+<h2>👔 Courtiers</h2>
+
+<p>
+    @Html.ActionLink("Ajouter", "AddBroker", "Brokers")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firstname)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstname)
+            </td>
+            <td class="actions">
+                @Html.AntiForgeryToken()
+                <button id="@item.idBroker" onkeyup = "HelloYou(this)" data-open="modal1">EFFACER TEST</button>
+                @Html.ActionLink("✎", "EditBroker", new { id = item.idBroker })
+                @Html.ActionLink("🔎", "DetailsBroker", new { id = item.idBroker })
+                @Html.ActionLink("✕", "DeleteBroker", new { id = item.idBroker })
+            </td>
+        </tr>
+    }
+</table>
+
+
+<div class="btn-group">
+    <button type="button" class="open-modal" data-open="modal1">
+        fenetre modale  
+    </button>
+</div>
+
+<div class="modal" id="modal1" data-animation="slideInOutLeft">
+    <div class="modal-dialog">
+        <header class="modal-header">
+            Voulez-vous supprimer le courtier blabla ?
+            <button class="close-modal" aria-label="close modal" data-close  onclick = "GoodbyeYou()">
+                ✕
+            </button>
+        </header>
+        <section class="modal-content">
+            <input type="text"/>
+            <p><strong>Press ✕, ESC, or click outside of the modal to close it</strong></p><span id="textTarget"></span>
+            </section>
+        <footer class="modal-footer">
+            The footer of the first modal
+        </footer>
+    </div>
+</div>

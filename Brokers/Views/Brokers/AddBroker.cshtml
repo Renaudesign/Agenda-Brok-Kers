@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Addbrokers";
+}
+@model Brokers.Models.brokers
+
+<h2>Ajouter un courtier</h2>
+@if (TempData["Success"] != null)
+{
+    <div class="success">
+        <p>@TempData["Success"].ToString()</p>
+    </div>
+}
+@using (Html.BeginForm("AddBroker", "Brokers", FormMethod.Post))
+{
+    <ul>
+        <li>
+            @Html.Label("Lastname", "Renseignez le nom")
+            @Html.TextBoxFor(model => model.lastname, new { @class = "form-control", placeholder = "prénom" })
+            @Html.ValidationMessageFor(model => model.lastname)
+        </li>
+        <li>
+            @Html.Label("Firstname", "Renseignez le prénom")
+            @Html.TextBoxFor(brokers => brokers.firstname, new { @class = "form-control", placeholder = "prénom" })
+            @Html.ValidationMessageFor(brokers => brokers.firstname)
+        </li>
+        <li>
+            @Html.Label("Mail", "Renseignez l'adresse mail")
+            @Html.TextBoxFor(brokers => brokers.mail, new { @class = "form-control", placeholder = "adresse email" })
+            @Html.ValidationMessageFor(brokers => brokers.mail)
+        </li>
+        <li>
+            @Html.Label("PhoneNumber", "Renseignez le numéro de téléphone")
+            @Html.TextBoxFor(brokers => brokers.phoneNumber, new { @class = "form", placeholder = "numéro de téléphone" })
+            @Html.ValidationMessageFor(brokers => brokers.phoneNumber)
+        </li>
+        <li>
+            @Html.AntiForgeryToken()
+            <input class="btnsubmit" type="submit" value="valider le courtier" />
+        </li>
+    </ul>
+
+}

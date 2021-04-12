@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Brokers.Models.customers>
+
+@{
+    ViewBag.Title = "ListClients";
+}
+
+<h2>👦 Clients</h2>
+
+<p>
+    @Html.ActionLink("Ajouter", "AddClient", "Clients")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.budget)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.budget)
+        </td>
+        <td class="actions">
+            @Html.AntiForgeryToken()
+            @Html.ActionLink("✎", "EditClient", new { id = item.idCustomers })
+            @Html.ActionLink("🔎", "DetailsClient", new { id = item.idCustomers })
+            @Html.ActionLink("✕", "DeleteClient", new { id = item.idCustomers })
+        </td>
+    </tr>
+}
+
+</table>

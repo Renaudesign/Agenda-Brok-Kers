@@ -1,0 +1,67 @@
+﻿@model Brokers.Models.brokers
+
+@{
+    ViewBag.Title = "EditBroker";
+}
+
+<h2>Modifier le courtier</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @if (TempData["Success"] != null)
+{
+    <div class="success">
+        <p>@TempData["Success"].ToString()</p>
+    </div>
+}
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.idBroker)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form-control", placeholder = "nom" } })
+            @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.firstname, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control", placeholder = "prénom" } })
+            @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control", placeholder = "mail" } })
+            @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.phoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.phoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "tel" } })
+            @Html.ValidationMessageFor(model => model.phoneNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="sauvegarder les modifications" class="btnsubmit" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Retour à la liste", "ListBrokers")
+</div>

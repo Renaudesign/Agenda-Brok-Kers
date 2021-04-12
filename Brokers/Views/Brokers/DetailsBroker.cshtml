@@ -1,0 +1,54 @@
+﻿@model Brokers.Models.brokers
+
+@{
+    ViewBag.Title = "DetailsBroker";
+}
+
+<h2>Détails courtier</h2>
+
+<div>
+    <hr />
+    <table class="table">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.lastname)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.firstname)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.mail)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.mail)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.phoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.phoneNumber)
+            </td>
+        </tr>
+    </table>
+  
+</div>
+<p>
+
+    @Html.ActionLink("✎", "EditBroker", new { id = Model.idBroker })
+    @Html.ActionLink("Retour à la liste", "ListBrokers")
+</p>
