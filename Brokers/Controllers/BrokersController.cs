@@ -87,7 +87,7 @@ namespace Brokers.Controllers
                 var mail = broker.mail;
                 var phone = broker.phoneNumber;
                 db.SaveChanges();
-                TempData["Success"] = "Courtier modifié avec succès";
+                TempData["Success"] = "Courtier "+ lastname +" modifié avec succès";
                 return View();
             }
             return View();
@@ -96,12 +96,21 @@ namespace Brokers.Controllers
         //Effacer un courtier -- AFFICHAGE DE LA VUE NON FONCTIONNEL --
         //[ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult DeleteBroker(int id)
+        public ActionResult DeleteBroker(int? id)
         {
-            //var broker = db.brokers.Find(id);
-            //db.brokers.Remove(broker);
-            //db.SaveChanges();
-            return View("ListBrokers", "Brokers.Models.brokers");
+            var input = ViewBag.inputBroker;
+            var broker = db.brokers.Find(id);
+            var brokerName = broker.lastname;
+            var brokers = db.brokers.ToList();
+            if (brokerName == input)
+                {
+                db.brokers.Remove(broker);
+                db.SaveChanges();
+                TempData["Failure"] = "Saisie incorrecte";
+                return View();
+            }
+            TempData["Failure"] = "Saisie incorrecte";
+            return View("ListBrokers", brokers);
         }
 
         [HttpGet]
@@ -110,7 +119,8 @@ namespace Brokers.Controllers
             //var broker = db.brokers.Find(id);
             //db.brokers.Remove(broker);
             //db.SaveChanges();
-            return View("ListBrokers", "Brokers.Models.brokers");
+            var brokers = db.brokers.ToList();
+            return View("ListBrokers", brokers);
         }
 
 

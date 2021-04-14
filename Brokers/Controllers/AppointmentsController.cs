@@ -3,87 +3,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Brokers.Models;
 
 namespace Brokers.Controllers
 {
     public class AppointmentsController : Controller
     {
-        // GET: Appointments
-        public ActionResult Index()
+        agendaEntities db = new agendaEntities();
+
+        //afficher la page d'ajout de rdv
+        [HttpGet]
+        public ActionResult AddAppointment()
         {
+            ViewBag.idBroker = new SelectList(db.brokers, "idBroker", "lastname");
+            ViewBag.idCustomers = new SelectList(db.customers, "idCustomers", "lastname");
             return View();
         }
-
-        // GET: Appointments/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Appointments/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Appointments/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult AddAppointment(appointments appointment)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            ViewBag.idBroker = new SelectList(db.brokers, "idBroker", "lastname", appointment.idBroker);
+            ViewBag.idCustomers = new SelectList(db.customers, "idCustomers", "lastname", appointment.idCustomers);
+            return View(appointment);
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        //enregistrer le nouveau rdv
+        [HttpPost]
+        public ActionResult SaveAppointment(appointments appointment)
+        {
+            if (ModelState.IsValid)
             {
+                db.appointments.Add(appointment);
+                db.SaveChanges();
+                TempData["Success"] = "Rendez-vous enregistré avec succès";
                 return View();
             }
+            return View("AddAppointment", appointment);
         }
 
-        // GET: Appointments/Edit/5
-        public ActionResult Edit(int id)
+        //Afficher la liste des rdv
+        public ActionResult ListAppointments()
         {
-            return View();
-        }
-
-        // POST: Appointments/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Appointments/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Appointments/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var appointments = db.appointments.ToList();
+            return View(appointments);
         }
     }
 }

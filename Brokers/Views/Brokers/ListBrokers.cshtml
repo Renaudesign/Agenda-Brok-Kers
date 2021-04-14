@@ -7,7 +7,7 @@
 <h2>👔 Courtiers</h2>
 
 <p>
-    @Html.ActionLink("Ajouter", "AddBroker", "Brokers")
+    @Html.ActionLink("+", "AddBroker", "Brokers")
 </p>
 <table class="table">
     <tr>
@@ -31,36 +31,30 @@
             </td>
             <td class="actions">
                 @Html.AntiForgeryToken()
-                <button id="@item.idBroker" onkeyup = "HelloYou(this)" data-open="modal1">EFFACER TEST</button>
                 @Html.ActionLink("✎", "EditBroker", new { id = item.idBroker })
                 @Html.ActionLink("🔎", "DetailsBroker", new { id = item.idBroker })
-                @Html.ActionLink("✕", "DeleteBroker", new { id = item.idBroker })
+                @*@Html.ActionLink("✕", "DeleteBroker", new { id = item.idBroker })*@
+                <button type="button" id="@item.idBroker" name="@item.lastname" data-open="modal1" class="suppressBtn">✖</button>
             </td>
         </tr>
     }
 </table>
 
-
-<div class="btn-group">
-    <button type="button" class="open-modal" data-open="modal1">
-        fenetre modale  
-    </button>
-</div>
-
 <div class="modal" id="modal1" data-animation="slideInOutLeft">
     <div class="modal-dialog">
         <header class="modal-header">
-            Voulez-vous supprimer le courtier blabla ?
-            <button class="close-modal" aria-label="close modal" data-close  onclick = "GoodbyeYou()">
+            Voulez-vous supprimer le courtier ?
+            <button class="close-modal" aria-label="close modal" data-close>
                 ✕
             </button>
         </header>
-        <section class="modal-content">
-            <input type="text"/>
-            <p><strong>Press ✕, ESC, or click outside of the modal to close it</strong></p><span id="textTarget"></span>
-            </section>
-        <footer class="modal-footer">
-            The footer of the first modal
-        </footer>
+        @using (Html.BeginForm("DeleteBroker", "Brokers", FormMethod.Post))
+        {
+    <section class="modal-content">
+        <p>Pour confirmer la suppression du courtier veuillez taper son nom de famille - <span id="cibleTexte"></span> - dans le champ suivant: </p>
+        @Html.TextBox("inputBroker", "", new { placeholder = "nom de famille" })
+        @Html.ActionLink("SUPPRIMER", "DeleteBroker", null, null, new { @class = "suppressBtn", id = "suppressButton" })
+    </section>
+        }
     </div>
 </div>

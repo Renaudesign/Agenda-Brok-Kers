@@ -25,7 +25,7 @@ namespace Brokers.Controllers
             {
                 db.customers.Add(client);
                 db.SaveChanges();
-                TempData["Success"] = "Client enregistré avec succès";
+                TempData["Success"] = "Client "+ client.lastname + " enregistré avec succès";
                 return View();
             }
             return View();

@@ -1,13 +1,46 @@
-﻿@{
-	ViewBag.Title = "Index";
+﻿@model IEnumerable<Brokers.Models.appointments>
+@{
+    ViewBag.Title = "Index";
 }
 <h2>AGENDA</h2>
+<table class="table">
+    <tr>
+        <th>
+            🕗  @Html.ActionLink("+", "AddAppointment", "Appointments")
+        </th>
+        <th>
+            ✎ Sujet
+        </th>
+        <th>
+            👔  @Html.ActionLink("+", "AddBroker", "Brokers") @Html.ActionLink("☰", "ListBrokers", "Brokers")
+        </th>
+        <th>
+            👦  @Html.ActionLink("+", "AddClient", "Clients") @Html.ActionLink("☰", "ListClients", "Clients")
+        </th>
+        <th></th>
+    </tr>
 
-<div class="agendaHead">
-    <span class="horaires">🕗 horaires</span>
-    <span class="courtiers">👔 courtiers @Html.ActionLink("+", "AddBroker", "Brokers") @Html.ActionLink("liste", "ListBrokers", "Brokers")</span>
-    <span class="clients">👦 clients @Html.ActionLink("+", "AddClient", "Clients") @Html.ActionLink("liste", "ListClients", "Clients")</span>
-</div>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brokers.lastname, "Courtier")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customers.lastname, "Client")
+            </td>
+            <td>
+                @Html.ActionLink("✎", "Edit", new { id = item.idAppointments })
+                @Html.ActionLink("🔎", "Details", new { id = item.idAppointments })
+                @Html.ActionLink("✖", "Delete", new { id = item.idAppointments })
+            </td>
+        </tr>
+    }
 
-
-
+</table>

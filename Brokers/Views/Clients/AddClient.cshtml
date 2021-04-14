@@ -4,11 +4,8 @@
     ViewBag.Title = "AddClient";
 }
 
-<h2>View</h2>
+<h2>👦 Ajouter un client</h2>
 
-
-
-<h4>Ajouter un client</h4>
 @if (TempData["Success"] != null)
 {
     <div class="success">
@@ -49,3 +46,6 @@
         </li>
     </ul>
 }
+<div>
+    @Html.ActionLink("Retour à la liste", "ListClients")
+</div>

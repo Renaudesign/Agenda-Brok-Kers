@@ -6,6 +6,8 @@
 //     Les modifications manuelles apportées à ce fichier sont remplacées si le code est régénéré.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Brokers.Models
 {
@@ -15,9 +17,19 @@ namespace Brokers.Models
     public partial class appointments
     {
         public int idAppointments { get; set; }
+
+        [Display(Name = "Date et heure")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [Required(ErrorMessage = "Veuillez préciser un horaire")]
         public System.DateTime dateHour { get; set; }
+
+        [Display(Name = "Sujet du rdv")]
         public string subject { get; set; }
+
+        [Display(Name = "Client")]
         public int idCustomers { get; set; }
+
+        [Display(Name = "Courtier")]
         public int idBroker { get; set; }
     
         public virtual brokers brokers { get; set; }

@@ -21,7 +21,8 @@ namespace Brokers.Models
         {
             this.appointments = new HashSet<appointments>();
         }
-    
+
+        [Display(Name = "Client")]
         public int idCustomers { get; set; }
 
         [Display(Name = "Nom de famille")]
