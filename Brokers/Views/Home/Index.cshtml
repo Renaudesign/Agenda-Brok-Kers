@@ -2,45 +2,36 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>AGENDA</h2>
-<table class="table">
-    <tr>
-        <th>
-            🕗  @Html.ActionLink("+", "AddAppointment", "Appointments")
-        </th>
-        <th>
-            ✎ Sujet
-        </th>
-        <th>
-            👔  @Html.ActionLink("+", "AddBroker", "Brokers") @Html.ActionLink("☰", "ListBrokers", "Brokers")
-        </th>
-        <th>
-            👦  @Html.ActionLink("+", "AddClient", "Clients") @Html.ActionLink("☰", "ListClients", "Clients")
-        </th>
-        <th></th>
-    </tr>
+<section class="navbar">
+    <div>
+        <h2>AGENDA</h2>
+    </div>
+    <div><p>test</p></div>
+</section>
+<section class="navbar">
+    <div>🕗 horaire @Html.ActionLink("✚", "AddAppointment", "Appointments")</div>
+    <div>👔 courtier @Html.ActionLink("✚", "AddBroker", "Brokers") @Html.ActionLink("☰", "ListBrokers", "Brokers")</div>
+    <div>👦 client @Html.ActionLink("✚", "AddClient", "Clients") @Html.ActionLink("☰", "ListClients", "Clients")</div>
+</section>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.dateHour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brokers.lastname, "Courtier")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.customers.lastname, "Client")
-            </td>
-            <td>
-                @Html.ActionLink("✎", "Edit", new { id = item.idAppointments })
-                @Html.ActionLink("🔎", "Details", new { id = item.idAppointments })
-                @Html.ActionLink("✖", "Delete", new { id = item.idAppointments })
-            </td>
-        </tr>
-    }
-
-</table>
+@foreach (var item in Model)
+{
+<section class="rdv">
+    <div class="navbar">
+        <div>@Html.DisplayFor(modelItem => item.dateHour)</div>
+        <div>
+            <strong>@Html.DisplayFor(modelItem => item.brokers.lastname, "Courtier")</strong><br />
+            @Html.DisplayFor(modelItem => item.brokers.firstname, "Courtier")
+        </div>
+        <div>
+            <strong>@Html.DisplayFor(modelItem => item.customers.lastname, "Client")</strong><br />
+            @Html.DisplayFor(modelItem => item.customers.firstname, "Client")
+        </div>
+    </div>
+    <div>
+        @Html.DisplayFor(modelItem => item.subject)
+    </div>
+        @Html.ActionLink("✎", "EditAppointment", "Appointments", new { id = item.idAppointments }, "null")
+        @Html.ActionLink("🔎", "DetailsAppointment", "Appointments", new { id = item.idAppointments }, "null")
+</section>
+}

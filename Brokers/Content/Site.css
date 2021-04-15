@@ -51,10 +51,10 @@ h2{
     font-weight:300;
     margin: 10px 0px;
 }
-h3
+#dateday
 {
     font-weight: 300;
-    font-size: 2em
+    font-size: 2.2em;
 }
 header {
     display: flex;
@@ -62,13 +62,23 @@ header {
     justify-content: space-between;
     position: relative;
 }
-#today p {
-    align-self: flex-start;
-    font-size: 0.9em;
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
 }
-#brand{
+.listheaditem{
+    width : 100%;
+}
+#brand {
     align-self: end;
     width: 200px;
+}
+.rdv {
+    background-color: #ffffff22;
+    margin : 10px 0px;
+    padding : 10px;
 }
 ul{
     list-style:none;
@@ -80,7 +90,13 @@ input {
     width: 100%;
     height: 2em;
     border-radius: 5px;
+    transition: 0.1s;
 }
+    input:focus {
+        outline: none;
+        box-shadow: 0px 0px 5px #f8f4e3ff;
+        transition: 0.1s;
+    }
 .btnsubmit {
     font-size: 1.1em;
     font-weight: 600;
@@ -125,11 +141,17 @@ th{
 }
 .actions{
     text-align: right;
+    width: 90px;
 }
 .success {
     font-style: italic;
     font-weight: 500;
     color: #59c86a;
+}
+.failure {
+    font-style: italic;
+    font-weight: 500;
+    color: #ff8966ff;
 }
 button {
     color: #f8f4e3ff;
@@ -139,12 +161,16 @@ button {
     box-sizing: border-box;
     transition: 0.2s;
     border-radius: 5px;
+    outline:none
 }
-
     button:hover {
         background-color: #f8f4e3ff;
         transition: 0.2s;
         color: #0F1231;
+    }
+    button:focus {
+        outline: none;
+        box-shadow: 0px 0px 5px #f8f4e3ff;
     }
 .suppressBtn {
     color: #ff8966ff;
@@ -153,8 +179,8 @@ button {
     padding: 0px 5px;
     box-sizing: border-box;
     transition: 0.2s;
+    font-weight:700;
 }
-
     .suppressBtn:hover {
         background-color: #ff8966ff;
         transition: 0.2s;

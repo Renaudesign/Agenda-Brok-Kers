@@ -5,9 +5,8 @@
 }
 
 <h2>👦 Clients</h2>
-
 <p>
-    @Html.ActionLink("+", "AddClient", "Clients")
+    @Html.ActionLink("✚", "AddClient", "Clients")
 </p>
 <table class="table">
     <tr>
@@ -20,20 +19,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.firstname)
-        </td>
-        <td class="actions">
-            @Html.AntiForgeryToken()
-            @Html.ActionLink("✎", "EditClient", new { id = item.idCustomers })
-            @Html.ActionLink("🔎", "DetailsClient", new { id = item.idCustomers })
-            @Html.ActionLink("✕", "DeleteClient", new { id = item.idCustomers })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstname)
+            </td>
+            <td class="actions">
+                @Html.AntiForgeryToken()
+                @Html.ActionLink("✎", "EditClient", new { id = item.idCustomers })
+                @Html.ActionLink("🔎", "DetailsClient", new { id = item.idCustomers })
+                @Html.ActionLink("✕", "DeleteClient", new { id = item.idCustomers })
+            </td>
+        </tr>
+    }
 </table>

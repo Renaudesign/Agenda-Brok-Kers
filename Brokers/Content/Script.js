@@ -1,6 +1,21 @@
 ﻿// @ts-check
 
+//Affichage du jour de la semaine
+let today_date = new Date()
+const weekday = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
+const month = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
 
+let dateday = weekday[today_date.getDay()]
+document.getElementById("dateday").innerHTML = dateday
+
+let datetest = today_date.getDate() + " " + month[today_date.getMonth()] + " " + today_date.getFullYear()
+document.getElementById("datedaytest").innerHTML = datetest
+
+
+
+
+
+//Fenêtre modale
 const openEls = document.querySelectorAll("[data-open]");
 const closeEls = document.querySelectorAll("[data-close]");
 const isVisible = "is-visible";
@@ -9,8 +24,7 @@ for (const el of openEls) {
     el.addEventListener("click", function (element) {
         let brokerId = this.id;
         let brokerName = this.name;
-        document.getElementById("suppressButton").setAttribute("name", brokerName);
-        document.getElementById("suppressButton").setAttribute("data-broker", brokerId);
+        document.getElementById("idbroker").setAttribute("value", brokerId);
         document.getElementById("cibleTexte").innerHTML = brokerName;
         const modalId = this.dataset.open;
         document.getElementById(modalId).classList.add(isVisible);

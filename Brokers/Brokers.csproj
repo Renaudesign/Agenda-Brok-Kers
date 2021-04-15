@@ -173,6 +173,8 @@
     <Content Include="Views\Clients\DetailsClient.cshtml" />
     <Content Include="Views\Clients\EditClient.cshtml" />
     <Content Include="Views\Appointments\AddAppointment.cshtml" />
+    <Content Include="Views\Appointments\EditAppointment.cshtml" />
+    <Content Include="Views\Appointments\DetailsAppointment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

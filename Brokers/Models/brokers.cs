@@ -27,12 +27,12 @@ namespace Brokers.Models
 
         [Display(Name = "Nom de famille")]
         [Required(ErrorMessage = "Votre nom est nécessaire")]
-        [StringLength(50, ErrorMessage = "Ce champ est limité à 50 caractères")]
+        [MaxLength(50, ErrorMessage = "Ce champ est limité à 50 caractères")]
         public string lastname { get; set; }
 
         [Display(Name = "Prénom")]
         [Required(ErrorMessage = "Votre prénom est nécessaire")]
-        [StringLength(25, ErrorMessage = "Ce champ est limité à 25 caractères")]
+        [MaxLength(25, ErrorMessage = "Ce champ est limité à 25 caractères")]
         public string firstname { get; set; }
 
         [Display(Name = "Adresse e-mail")]
@@ -43,7 +43,7 @@ namespace Brokers.Models
         [Display(Name = "Numéro de téléphone")]
         [Required(ErrorMessage = "Votre numéro de téléphone est nécessaire")]
         [Phone(ErrorMessage = "Veuillez rentrer un numéro valide, composé de 10 chiffres")]
-        [StringLength(10, ErrorMessage = "Ce champ est limité à 25 caractères")]
+        [MaxLength(10, ErrorMessage = "Ce champ est limité à 25 caractères")]
         public string phoneNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

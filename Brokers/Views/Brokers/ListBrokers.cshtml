@@ -7,15 +7,28 @@
 <h2>👔 Courtiers</h2>
 
 <p>
-    @Html.ActionLink("+", "AddBroker", "Brokers")
+    @Html.ActionLink("✚", "AddBroker", "Brokers")
 </p>
+
+@if (TempData["Success"] != null)
+{
+    <span class="success">
+        @TempData["Success"].ToString()
+    </span>
+}
+@if (TempData["Failure"] != null)
+{
+    <span class="failure">
+        @TempData["Failure"].ToString()
+    </span>
+}
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.lastname)
+            <strong>@Html.DisplayNameFor(model => model.lastname)</strong>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.firstname)
+            <strong>@Html.DisplayNameFor(model => model.firstname)</strong>
         </th>
         <th></th>
     </tr>
@@ -53,7 +66,8 @@
     <section class="modal-content">
         <p>Pour confirmer la suppression du courtier veuillez taper son nom de famille - <span id="cibleTexte"></span> - dans le champ suivant: </p>
         @Html.TextBox("inputBroker", "", new { placeholder = "nom de famille" })
-        @Html.ActionLink("SUPPRIMER", "DeleteBroker", null, null, new { @class = "suppressBtn", id = "suppressButton" })
+        <input id="idbroker" name="idbroker" type="number" hidden />
+        <input id="suppressButton" class="suppressBtn" type="submit" value="SUPPRIMER" />
     </section>
         }
     </div>

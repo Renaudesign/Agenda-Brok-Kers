@@ -47,5 +47,42 @@ namespace Brokers.Controllers
             var appointments = db.appointments.ToList();
             return View(appointments);
         }
+
+
+        //Afficher les détails du rdv
+        [HttpGet]
+        public ActionResult DetailsAppointment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            var appointmentDetails = db.appointments.Find(id);
+            if (appointmentDetails == null)
+            {
+                return HttpNotFound();
+            }
+            return View("DetailsAppointment", appointmentDetails);
+        }
+
+        //Ouvrir la page d'édition du rdv
+        [HttpGet]
+        public ActionResult EditAppointment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            var appointmentDetails = db.appointments.Find(id);
+            if (appointmentDetails == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.idBroker = new SelectList(db.brokers, "idBroker", "lastname");
+            ViewBag.idCustomers = new SelectList(db.customers, "idCustomers", "lastname");
+            return View("EditAppointment", appointmentDetails);
+        }
+
     }
 }

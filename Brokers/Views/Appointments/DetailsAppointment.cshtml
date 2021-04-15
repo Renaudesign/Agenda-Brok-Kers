@@ -1,0 +1,52 @@
+﻿@model Brokers.Models.appointments
+
+@{
+    ViewBag.Title = "DetailsAppointment";
+}
+
+<h2>🕗 Détails du rendez-vous</h2>
+
+<div>
+    <table class="table">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.dateHour)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.dateHour)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.subject)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.subject)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.brokers.lastname, "Courtier")
+            </td>
+            <td>
+                <strong>@Html.DisplayFor(model => model.brokers.lastname)</strong> @Html.DisplayFor(model => model.brokers.firstname)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.customers.lastname, "Client")
+            </td>
+            <td>
+                <strong>@Html.DisplayFor(model => model.customers.lastname)</strong> @Html.DisplayFor(model => model.customers.firstname)
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("✎", "EditAppointment", new { id = Model.idAppointments }) @Html.ActionLink("☰", "Index", "Home")
+    <input id="" class="btnsubmit" type="submit" value="✖ test button" />
+    @Html.ActionLink("✖", "DeleteAppointment", "Appointments", new { id = Model.idAppointments }, "null")
+</p>

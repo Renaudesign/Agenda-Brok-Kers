@@ -93,33 +93,30 @@ namespace Brokers.Controllers
             return View();
         }
 
-        //Effacer un courtier -- AFFICHAGE DE LA VUE NON FONCTIONNEL --
+
+        [HttpGet]
+        public ActionResult DeleteBroker(brokers broker)
+        {
+            return View("ListBrokers");
+        }
+
+
         //[ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult DeleteBroker(int? id)
+        public ActionResult DeleteBroker(String inputBroker, int idbroker)
         {
-            var input = ViewBag.inputBroker;
+            int id = idbroker;
             var broker = db.brokers.Find(id);
             var brokerName = broker.lastname;
             var brokers = db.brokers.ToList();
-            if (brokerName == input)
+            if (inputBroker == brokerName)
                 {
                 db.brokers.Remove(broker);
                 db.SaveChanges();
-                TempData["Failure"] = "Saisie incorrecte";
+                TempData["Success"] = "Courtier " + broker.lastname + " supprimé";
                 return View();
             }
             TempData["Failure"] = "Saisie incorrecte";
-            return View("ListBrokers", brokers);
-        }
-
-        [HttpGet]
-        public ActionResult DeleteBroker()
-        {
-            //var broker = db.brokers.Find(id);
-            //db.brokers.Remove(broker);
-            //db.SaveChanges();
-            var brokers = db.brokers.ToList();
             return View("ListBrokers", brokers);
         }
 
